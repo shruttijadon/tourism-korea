@@ -9,7 +9,7 @@ st.set_page_config(
     page_icon="🎓",
     layout="wide"
 )
- 
+
 # --- Session State ---
 if "home_open" not in st.session_state:
     st.session_state.home_open = False
@@ -221,11 +221,17 @@ elif choice == "Projects":
             data = {'Year': [2020, 2021, 2022, 2023, 2024], 'Inbound': [2500, 1000, 3200, 11000, 16500], 'Outbound': [500, 200, 700, 2300, 3000]}
             df = pd.DataFrame(data)
             fig, ax = plt.subplots(figsize=(8, 4))
+            fig.patch.set_facecolor('none')
+            ax.set_facecolor('none')
             ax.plot(df['Year'], df['Inbound'], marker='o', label='Inbound', color='#ffb6c1')
             ax.plot(df['Year'], df['Outbound'], marker='s', label='Outbound', color='#a393eb')
+            ax.tick_params(axis='x', colors='white')
+            ax.tick_params(axis='y', colors='white')
+            ax.set_xlabel('Year', color='white')
+            ax.set_ylabel('Visitors', color='white')
             ax.set_title('Tourism Recovery Trend', color='white')
-            ax.tick_params(colors='white')
-            ax.legend(facecolor='black', labelcolor='white')
+            ax.legend(facecolor='black', edgecolor='white', labelcolor='white')
+            ax.grid(True, color='white', linestyle='--', alpha=0.3)
             st.pyplot(fig)
 
         if st.button("Close project details", key="close_project"):
