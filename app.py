@@ -227,4 +227,10 @@ h1, h2, h3, h4 {
     color: #ffb6c1 !important;
 }
 div.stButton > button {
-    background: linear-gradient(90deg, #ffb6c1
+    background: linear-gradient(90deg, #ffb6c1, #ff9aa2);
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+</style>
+""", unsafe_allow_html=True)
