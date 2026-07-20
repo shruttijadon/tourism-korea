@@ -22,7 +22,7 @@ st.markdown("""
 # --- Sidebar Navigation ---
 with st.sidebar:
     st.title("📍 Navigation")
-    menu = ["Home", "About Me", "Skills & Learning", "Projects", "GKS Journey", "Contact"]
+    menu = ["Home", "About Me", "Skills & Learning", "Projects", "Certifications & Research", "GKS Journey", "Contact"]
     choice = st.sidebar.radio("Go to", menu)
 
 # --- HOME ---
@@ -88,18 +88,51 @@ elif choice == "Projects":
     <h3>🌍 Tourism in Korea (2019-2024): A Data-Driven Analysis</h3>
     <p>Analyzing post-pandemic recovery data to understand shifts in consumer behavior using official Korean statistics.</p>
     </div>
-    """, unsafe_allow_html=True)
     
-    st.markdown("""
+    <div class="project-card">
+    <h3>💻 Tata Forge: GenAI Powered Data Analytics</h3>
+    <p><b>Focus:</b> Exploratory data analysis, risk profiling, predictive modeling with AI, and business intelligence reporting.</p>
+    </div>
+    
     <div class="project-card">
     <h3>💻 Virtual Mentorship Bridge</h3>
     <p><b>Role: Lead Developer</b><br>
     Designed a web-based platform to connect students with mentors, demonstrating a move from ideation to full deployment.</p>
     </div>
+    
+    <div class="project-card">
+    <h3>🥗 Recipe Finder Website</h3>
+    <p>A web application built using JavaScript and APIs to fetch live data for recipes.</p>
+    </div>
     """, unsafe_allow_html=True)
     
     st.subheader("👥 Academic Leadership")
     st.write("**Role: Class Representative (CR)** - Managing communication between faculty and students, honing essential leadership and organizational skills.")
+
+# --- CERTIFICATIONS & RESEARCH (NEW SECTION) ---
+elif choice == "Certifications & Research":
+    st.header("Certifications & Research 📜")
+    
+    st.subheader("📝 Research Publication")
+    st.info("📊 **Paper:** 'Data-Driven Traffic Incident Analysis and Risk Prediction for Smart City Mobility: A Case Study of Seoul Expressways'")
+    
+    st.subheader("🏅 Detailed Certifications")
+    st.markdown("""
+    <div class="project-card">
+    <h4>🎓 NPTEL Elite Certification: Developing Soft Skills and Personality</h4>
+    <p>Completed an intensive 8-week certification course (Aug-Oct 2025) focused on enhancing professional soft skills, communication, and personality development. Achieved a consolidated score of <b>77%</b> through assignments and proctored examinations conducted by IIT Kanpur.</p>
+    </div>
+    
+    <div class="project-card">
+    <h4>🏆 Symbiosis Skill Hackathon 2026: National Level Participation</h4>
+    <p>Participated in a 36-hour national-level hackathon organized by the School of Computer Science and IT, Symbiosis University of Applied Sciences. Represented team <b>Rebel Teachies</b>, focused on rapid web development and innovative problem-solving.</p>
+    </div>
+    
+    <div class="project-card">
+    <h4>💼 Forage: GenAI Powered Data Analytics Job Simulation</h4>
+    <p>Completed a comprehensive professional job simulation (June 2026) involving practical scenarios in exploratory data analysis, risk profiling, predictive modeling with AI, and business intelligence reporting, bridging the gap between technical competency and strategic decision-making.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 # --- GKS JOURNEY ---
 elif choice == "GKS Journey":
@@ -124,4 +157,4 @@ elif choice == "Contact":
     st.header("Get In Touch 📬")
     st.write("I am open to collaborations and discussions regarding Data Science and research opportunities.")
     if st.button("Email Me"):
-        st.write("Email: your.email@example.com")
+        st.write("Email: shrutijadon1306@gmail.com")
