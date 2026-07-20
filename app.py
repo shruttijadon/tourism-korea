@@ -2,121 +2,97 @@ import streamlit as st
 
 # --- Page Setup ---
 st.set_page_config(
-    page_title="Shruti's Portfolio", 
+    page_title="Shruti Jadon | GKS Scholar Aspirant", 
     page_icon="🎓", 
     layout="wide"
 )
 
-# --- Aesthetic CSS Styling (The "Glassmorphism" Design) ---
+# --- Aesthetic CSS (Professional Dark Theme) ---
 st.markdown("""
     <style>
-    /* Global Background - Dark Gradient */
-    .stApp {
-        background: linear-gradient(135deg, #1a1a1a 0%, #2d242e 100%);
-        color: #e0e0e0;
-        font-family: 'Segoe UI', sans-serif;
+    .stApp { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #f1f5f9; }
+    [data-testid="stSidebar"] { background-color: rgba(15, 23, 42, 0.9) !important; }
+    
+    .card {
+        background: rgba(255, 255, 255, 0.03); padding: 25px; border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 20px;
+    }
+    h1, h2, h3 { color: #38bdf8 !important; }
+    
+    .stTextInput > div > div > input, .stTextArea > div > div > textarea {
+        background-color: #0f172a !important; color: white !important; border: 1px solid #334155 !important;
     }
     
-    /* Sidebar styling */
-    [data-testid="stSidebar"] {
-        background-color: rgba(0,0,0,0.2) !important;
-    }
-    
-    /* Glassmorphism Cards */
-    .project-card {
-        background: rgba(255, 255, 255, 0.05);
-        padding: 25px;
-        border-radius: 20px;
-        border: 1px solid rgba(255, 182, 193, 0.2);
-        margin-bottom: 20px;
-        backdrop-filter: blur(10px);
-        transition: transform 0.3s ease;
-    }
-    .project-card:hover { transform: translateY(-5px); }
-    
-    /* Headings in Soft Pink */
-    h1, h2, h3 { color: #ffb6c1 !important; }
-    
-    /* Buttons */
-    div.stButton > button {
-        background: linear-gradient(90deg, #ffb6c1, #a393eb);
-        color: white;
-        border: none;
-        border-radius: 20px;
-        padding: 10px 20px;
-    }
+    .footer { border-top: 1px solid #334155; padding-top: 20px; margin-top: 50px; color: #64748b; text-align: center; }
     </style>
 """, unsafe_allow_html=True)
 
 # --- Sidebar Navigation ---
 with st.sidebar:
     st.title("📍 Navigation")
-    menu = ["Home", "About Me", "Skills & Learning", "Projects", "Certifications & Research", "GKS Journey", "Contact"]
+    menu = ["Home", "About Me", "Skills & Projects", "Research & Certifications", "GKS Journey", "Contact"]
     choice = st.radio("Go to", menu)
 
 # --- HOME ---
 if choice == "Home":
-    st.title("Hi there, I'm Shruti ✨")
-    st.subheader("B.Tech Computer Science | Data Enthusiast | GKS Aspirant")
+    st.title("Shruti Jadon")
+    st.subheader("B.Tech Computer Science | Data Analytics | GKS 2028 Aspirant")
     st.markdown("---")
-    st.markdown("""
-    As a 3rd-year engineering student, I am deeply committed to exploring the intersection of **data analytics and human-centric design**. 
-    My goal is to secure the GKS Scholarship to pursue an M.Tech in Data Science and AI in South Korea by 2028.
-    """)
-    col1, col2, col3 = st.columns(3)
-    with col1: st.metric("Academic Year", "3rd Year")
-    with col2: st.metric("Target Degree", "M.Tech AI")
-    with col3: st.metric("Target Year", "2028")
+    st.write("A dedicated engineering student from India aiming to bridge the gap between data-driven innovation and human-centric policy design through the Global Korea Scholarship.")
+    
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Current Academic Year", "3rd Year")
+    c2.metric("Target Research", "M.Tech in AI")
+    c3.metric("Goal Year", "2028")
 
 # --- ABOUT ME ---
 elif choice == "About Me":
-    st.header("Who Am I? 👋")
-    st.write("I bridge the gap between complex data and real-world impact. By day, I am an engineering student dedicated to mastering data analytics and AI; by night, I am a trained dancer. This duality defines my professional approach.")
-    col1, col2 = st.columns([1.5, 1])
-    with col1:
-        st.subheader("My Approach")
-        st.write("I am currently transitioning my focus to **data-driven analytics**. My work is defined by a commitment to transforming raw data into actionable, human-centric solutions.")
-    with col2:
-        st.subheader("Why Korea? 🇰🇷")
-        st.write("I am fascinated by Korea’s technological ecosystem and how the nation leverages big data to drive policy-making.")
+    st.header("Who Am I?")
+    st.write("I am an engineering student who believes that data is the key to solving modern socio-economic challenges. My professional approach combines technical rigor with the discipline I have cultivated as a trained dancer.")
+    st.subheader("Vision for Korea")
+    st.write("I am deeply interested in South Korea’s digital innovation ecosystem and aim to leverage my AI and data analytics background to contribute to Korea's smart city and policy-making initiatives.")
 
-# --- SKILLS & LEARNING ---
-elif choice == "Skills & Learning":
-    st.header("Technical Skills & Roadmap 📈")
-    c1, c2 = st.columns(2)
-    c1.write("### ✅ Core Competencies\n- Python (Pandas, NumPy)\n- Data Visualization\n- Web Dev (Streamlit)")
-    c2.write("### 📌 Strategic Roadmap\n- Advanced SQL\n- Machine Learning\n- Research Methods")
-
-# --- PROJECTS ---
-elif choice == "Projects":
-    st.header("Projects & Leadership 🚀")
+# --- SKILLS & PROJECTS ---
+elif choice == "Skills & Projects":
+    st.header("Technical Competencies")
+    col1, col2 = st.columns(2)
+    col1.write("✅ Python (Pandas, NumPy)\n✅ Data Visualization\n✅ Web Development (Streamlit)")
+    col2.write("📌 Advanced SQL & Analytics\n📌 Machine Learning\n📌 Research Methodology")
+    
+    st.header("Selected Projects")
     st.markdown("""
-    <div class="project-card"><h3>🌍 Tourism in Korea Analysis</h3><p>Analyzing post-pandemic recovery data using official Korean statistics.</p></div>
-    <div class="project-card"><h3>💻 Tata Forge: GenAI Analytics</h3><p>Risk profiling, predictive modeling with AI, and data storytelling.</p></div>
-    <div class="project-card"><h3>💻 Virtual Mentorship Bridge</h3><p>Platform connecting students with mentors, built during Symbiosis Hackathon.</p></div>
+    <div class="card"><h3>🌍 Tourism in Korea (2019-2024)</h3><p>Data-driven analysis of post-pandemic recovery trends.</p></div>
+    <div class="card"><h3>💻 Tata Forge GenAI Analytics</h3><p>Predictive modeling for risk profiling and delinquency.</p></div>
+    <div class="card"><h3>💻 Virtual Mentorship Bridge</h3><p>Platform design to enhance student-mentor connectivity.</p></div>
     """, unsafe_allow_html=True)
 
-# --- CERTIFICATIONS & RESEARCH ---
-elif choice == "Certifications & Research":
-    st.header("Certifications & Research 📜")
-    st.info("📊 **Research Paper:** 'Data-Driven Traffic Incident Analysis and Risk Prediction for Smart City Mobility: A Case Study of Seoul Expressways'")
+# --- RESEARCH & CERTIFICATIONS ---
+elif choice == "Research & Certifications":
+    st.header("Research & Achievements")
+    st.info("📊 **Research Publication:** 'Data-Driven Traffic Incident Analysis and Risk Prediction for Smart City Mobility: A Case Study of Seoul Expressways'")
     st.markdown("""
-    <div class="project-card"><h4>🎓 NPTEL Elite Certification</h4><p>Developing Soft Skills and Personality (Score: 77%)</p></div>
-    <div class="project-card"><h4>🏆 Symbiosis Skill Hackathon 2026</h4><p>National Level Participant (Team: Rebel Teachies)</p></div>
-    <div class="project-card"><h4>💼 Forage: GenAI Powered Data Analytics</h4><p>Completed practical job simulation in June 2026.</p></div>
+    <div class="card"><h4>🎓 NPTEL Elite Certification</h4><p>Soft Skills and Personality Development (Score: 77%)</p></div>
+    <div class="card"><h4>🏆 Symbiosis Skill Hackathon 2026</h4><p>National Level Participant (Team: Rebel Teachies)</p></div>
     """, unsafe_allow_html=True)
 
 # --- GKS JOURNEY ---
 elif choice == "GKS Journey":
-    st.header("My GKS Journey (Target: 2028) 🎓")
-    st.write("Focused on building a profile that bridges Indian academic research with South Korea’s digital innovation ecosystem.")
+    st.header("My GKS Scholarship Roadmap (2028)")
+    st.write("My application strategy focuses on demonstrating alignment between my research on Seoul's smart city mobility and South Korea’s future academic/technological goals.")
+    st.success("Target: 9+ SGPA | Advanced ML Research | Strategic Networking")
 
 # --- CONTACT ---
 elif choice == "Contact":
-    st.header("Get In Touch 📬")
-    with st.form("contact"):
-        st.text_input("Your Name")
-        st.text_input("Your Email")
-        st.text_area("Your Message")
-        if st.form_submit_button("Send Some Sunshine"):
-            st.success("Message received!")
+    st.header("Get In Touch")
+    col_left, col_right = st.columns([1, 1])
+    with col_left:
+        with st.form("contact"):
+            st.text_input("Name")
+            st.text_input("Email")
+            st.text_area("Message")
+            st.form_submit_button("Send Message")
+    with col_right:
+        st.write("📧 **Email:** shrutijadon1306@gmail.com")
+        st.write("📍 **Location:** Indore, Madhya Pradesh, India")
+
+    st.markdown('<div class="footer">© 2026 Shruti Jadon | Portfolio for GKS Scholarship Application</div>', unsafe_allow_html=True)
