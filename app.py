@@ -4,7 +4,7 @@ import pandas as pd
 # --- Page Setup ---
 st.set_page_config(
     page_title="Shruti's Portfolio", 
-    page_icon="🚀", 
+    page_icon="🎓", 
     layout="wide"
 )
 
@@ -12,17 +12,9 @@ st.set_page_config(
 st.markdown("""
     <style>
     .main { background-color: #f8f9fa; }
-    .stButton>button { 
-        width: 100%; border-radius: 5px; height: 3em; 
-        background-color: #003366; color: white; font-weight: bold;
-    }
-    .card { 
-        background-color: white; padding: 20px; border-radius: 10px; 
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; 
-    }
     .project-card {
-        background-color: #e8f4f8; padding: 25px; border-left: 5px solid #003366;
-        border-radius: 8px; margin-bottom: 15px;
+        background-color: #ffffff; padding: 25px; border-left: 5px solid #003366;
+        border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     </style>
 """, unsafe_allow_html=True)
@@ -30,163 +22,106 @@ st.markdown("""
 # --- Sidebar Navigation ---
 with st.sidebar:
     st.title("📍 Navigation")
-    menu = ["Home", "About Me", "Projects", "Skills & Learning", "GKS Journey", "Contact"]
+    menu = ["Home", "About Me", "Skills & Learning", "Projects", "GKS Journey", "Contact"]
     choice = st.sidebar.radio("Go to", menu)
 
-# --- SECTIONS ---
-
+# --- HOME ---
 if choice == "Home":
     st.title("Welcome to My Portfolio 🌟")
-    st.subheader("B.Tech Computer Science | Data Enthusiast | Korea Focused")
-    st.write("3rd Year student exploring data analytics and its application in real-world decision-making.")
-    st.write("")
-    st.info("Goal: Secure GKS Scholarship for MTech in Data Science/AI at South Korean university (Sept 2028)")
+    st.subheader("B.Tech Computer Science | Data Enthusiast | GKS Aspirant")
+    st.markdown("---")
+    
+    st.markdown("""
+    ### 🎯 My Professional Vision
+    As a 3rd-year engineering student, I am deeply committed to exploring the intersection of **data analytics and human-centric design**. 
+    I believe in leveraging data to solve real-world problems and am currently channeling my academic and project work 
+    toward a single-minded goal: **securing the GKS Scholarship to pursue an M.Tech in Data Science and AI at a 
+    premier South Korean university by September 2028.**
+    """)
+    
+    col1, col2, col3 = st.columns(3)
+    with col1: st.metric(label="Academic Year", value="3rd Year")
+    with col2: st.metric(label="Target Degree", value="M.Tech AI")
+    with col3: st.metric(label="Target Year", value="2028")
+        
+    st.info("💡 Currently focusing on building data-driven projects that bridge technical innovation with policy impact.")
 
+# --- ABOUT ME ---
 elif choice == "About Me":
     st.header("Who Am I? 👋")
-    col1, col2 = st.columns([1.2, 1])
+    st.write("I bridge the gap between complex data and real-world impact. By day, I am an engineering student dedicated to mastering data analytics and AI; by night, I am a trained dancer. This duality defines my professional approach—I blend the analytical rigor of data science with the creative discipline I’ve cultivated through years of performance.")
     
+    col1, col2 = st.columns([1.5, 1])
     with col1:
-        st.write("""
-        **Shruti** - B.Tech Computer Science Student (3rd Year)
-        
-        I'm passionate about understanding how **data can drive decision-making** in real-world scenarios. 
-        Currently transitioning my focus from general Korea projects to **data-driven analytics and AI**.
-        
-        **Why Korea?** I'm fascinated by Korea's technological advancement and how they've leveraged data 
-        for policy-making and business growth, especially during the COVID-19 recovery.
-        """)
-    
+        st.subheader("My Approach")
+        st.write("I am currently transitioning my focus from general computer science to **data-driven analytics and AI**. My work is defined by a commitment to transforming raw data into actionable, human-centric solutions.")
     with col2:
-        st.markdown("**Interest in Korea** 🇰")
-        st.write("• Tech innovation & data culture")
-        st.write("• Tourism recovery case study")
-        st.write("• Future studies opportunity")
+        st.subheader("Why Korea? 🇰🇷")
+        st.write("I am fascinated by Korea’s technological ecosystem and how the nation leverages big data to drive policy-making and business growth. I am eager to contribute my technical skills to the next wave of global AI-driven innovation.")
 
+# --- SKILLS & LEARNING ---
 elif choice == "Skills & Learning":
-    st.header("Technical Skills & Learning Path 📚")
-    
+    st.header("Technical Skills & Strategic Roadmap 📈")
     col1, col2 = st.columns(2)
     
     with col1:
-        st.subheader("Current Skills")
-        st.write("✅ **Excel** - Data cleaning, basic charts")
-        st.write("✅ **Python** - Basics, Pandas")
-        st.write("✅ **Data Visualization** - Charts, trends analysis")
+        st.subheader("Core Competencies")
+        st.write("✅ **Data Manipulation:** Python (Pandas, NumPy), Excel")
+        st.write("✅ **Data Visualization:** Trend analysis, storytelling with data")
+        st.write("✅ **Web Development:** Streamlit, basic UI/UX")
     
     with col2:
-        st.subheader("Currently Learning & Planning")
-        st.write("📌 **Online Courses (Planning to take):**")
-        st.write("• AI & Machine Learning")
-        st.write("• SQL for data analytics")
-        st.write("• Advanced Data Visualization")
+        st.subheader("Strategic Roadmap (2026-2028)")
+        st.write("📌 **Advanced Analytics:** SQL for large-scale data")
+        st.write("📌 **Machine Learning:** AI for socio-economic forecasting")
+        st.write("📌 **Research Methods:** Academic foundations for grad studies")
     
-    st.markdown("---")
-    st.info("Focus: Shifting from general Korea-focused projects to specialized Data Science and AI skills")
+    st.divider()
+    st.info("**Core Focus:** Integrating technical proficiency with Korea-specific case studies to prepare for advanced graduate research.")
 
+# --- PROJECTS ---
 elif choice == "Projects":
-    st.header("My Projects 🔧")
+    st.header("Projects & Leadership 🚀")
     
-    st.markdown("### ✨ Featured Project")
     st.markdown("""
     <div class="project-card">
     <h3>🌍 Tourism in Korea (2019-2024): A Data-Driven Analysis</h3>
-    <p><b>Subtitle:</b> Analyzing how foreign visitor numbers & Korea tourism trends changed during and after the pandemic, 
-    using official Korean statistics</p>
+    <p>Analyzing post-pandemic recovery data to understand shifts in consumer behavior using official Korean statistics.</p>
     </div>
     """, unsafe_allow_html=True)
     
-    st.subheader("📋 Project Breakdown")
+    st.markdown("""
+    <div class="project-card">
+    <h3>💻 Virtual Mentorship Bridge</h3>
+    <p><b>Role: Lead Developer</b><br>
+    Designed a web-based platform to connect students with mentors, demonstrating a move from ideation to full deployment.</p>
+    </div>
+    """, unsafe_allow_html=True)
     
-    with st.expander("Problem Question"):
-        st.write("""
-        How did the number of foreign visitors to Korea change from 2019 to 2024, 
-        and what does this tell us about tourism recovery after COVID-19?
-        """)
-    
-    with st.expander("Data Source"):
-        st.write("""
-        Official Korean Statistics from:
-        - MCIT Tourism Data (Ministry of Culture, Sports & Tourism)
-        - Annual foreign visitor numbers
-        - Outbound Korean traveler statistics
-        """)
-    
-    with st.expander("Tools Used"):
-        st.write("""
-        Excel - Data cleaning and basic charts
-        Python (Pandas) - Advanced data processing
-        Visualization - Line charts and bar charts
-        """)
-    
-    with st.expander("Methodology"):
-        st.write("""
-        Step 1: Cleaned table of visitor numbers by year
-        Step 2: Calculated year-on-year changes (percent increase/decrease)
-        Step 3: Created line charts and bar charts to visualize trends
-        """)
-    
-    with st.expander("Key Findings"):
-        st.write("""
-        Key Data Points:
-        - Foreign visitor numbers dropped sharply in 2020 due to COVID-19
-        - Tourism started recovering from post-COVID onwards
-        - By 2020-24, impact reflected in pre-covid comparison
-        - Pattern: Korean outbound travel mirrors inbound tourism trends
-        - Shift observed: From outbound to inbound tourism post-pandemic
-        """)
-    
-    st.markdown("---")
-    st.markdown("### 🔜 Coming Soon")
-    st.write("Korea Intra-Tourism Comparison - Analyzing domestic vs international tourism patterns")
+    st.subheader("👥 Academic Leadership")
+    st.write("**Role: Class Representative (CR)** - Managing communication between faculty and students, honing essential leadership and organizational skills.")
 
+# --- GKS JOURNEY ---
 elif choice == "GKS Journey":
-    st.header("My GKS Scholarship Journey 🎓")
+    st.header("My GKS Scholarship Journey (Target: 2028) 🎓")
     
-    st.write("""
-    **Target:** Global Korea Scholarship (GKS) - MTech in Data Science/AI
-    
-    **Enrollment Goal:** September 2028
-    """)
-    
-    st.subheader("Why GKS and South Korea?")
-    st.write("""
-    Academic Excellence - Aiming for 9+ SGPA by end of Semester 5 (Dec 2026)
-    
-    Data-Driven Research - Interested in R&D focusing on how data analytics can support 
-    business policies and decision-making
-    
-    Korea Connection - My tourism data project demonstrates understanding of Korean statistics, 
-    policy-making, and how data can drive economic recovery and growth
-    
-    Cultural Exchange - Keen to contribute to India-Korea collaboration in tech and research
-    """)
-    
-    st.info("Current Focus: Semester 5 (Dec 2026) preparation to maintain 9+ SGPA for strong GKS profile")
+    st.info("**Core Vision:** Secure the GKS Scholarship to study how South Korea leverages data for socio-economic growth.")
 
+    st.subheader("📍 Phase 1: Foundation (Current)")
+    st.write("- Technical skill building (Python/Data Science).")
+    st.write("- Deploying real-world projects.")
+    
+    st.subheader("⚙️ Phase 2: Specialization (Next 12 Months)")
+    st.write("- Advanced ML and SQL focus.")
+    st.write("- Researching professors and target universities in Korea.")
+    
+    st.subheader("🎓 Phase 3: Application (2027-2028)")
+    st.write("- Finalizing GKS Personal Statement and Study Plan.")
+    st.write("- Maintaining 9+ SGPA.")
+
+# --- CONTACT ---
 elif choice == "Contact":
     st.header("Get In Touch 📬")
-    
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.subheader("Connect With Me")
-        st.write("Email: your.email@example.com")
-        st.write("GitHub: github.com/yourprofile")
-        st.write("LinkedIn: linkedin.com/in/yourprofile")
-    
-    with col2:
-        st.subheader("Send Me a Message")
-        with st.form("contact_form"):
-            name = st.text_input("Your Name")
-            email = st.text_input("Your Email")
-            message = st.text_area("Your Message")
-            subject = st.selectbox("Subject", ["General Inquiry", "Project Collaboration", "GKS Discussion"])
-            submit = st.form_submit_button("Send Message")
-            
-            if submit:
-                if name and email and message:
-                    st.success(f"Thank you, {name}! Your message has been received.")
-                    st.info("I will get back to you soon!")
-                else:
-                    st.error("Please fill all fields before submitting.")
+    st.write("I am open to collaborations and discussions regarding Data Science and research opportunities.")
+    if st.button("Email Me"):
+        st.write("Email: shrutijadon1306@gmail.com")
