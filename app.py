@@ -1,116 +1,127 @@
 import streamlit as st
 import pandas as pd
 
-# --- Page Setup: Configure the browser tab and layout ---
+# --- Page Setup ---
 st.set_page_config(
-    page_title="Shruti Jadon | Portfolio",
-    page_icon="🎓",
+    page_title="Shruti's Portfolio", 
+    page_icon="🎓", 
     layout="wide"
 )
 
-# --- CSS Styling: Custom styles for a clean, professional look ---
+# --- CSS Styling ---
 st.markdown("""
     <style>
     .main { background-color: #f8f9fa; }
     .project-card {
-        background-color: #ffffff;
-        padding: 20px;
-        border-left: 5px solid #003366;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-    }
-    .tag-pill {
-        display: inline-block;
-        padding: 5px 12px;
-        border-radius: 20px;
-        background-color: #e7f1ff;
-        color: #003366;
-        font-size: 0.85rem;
-        font-weight: bold;
-        margin-right: 5px;
-        margin-top: 5px;
+        background-color: #ffffff; padding: 25px; border-left: 5px solid #003366;
+        border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     </style>
 """, unsafe_allow_html=True)
 
-# --- Sidebar: Navigation menu ---
+# --- Sidebar Navigation ---
 with st.sidebar:
     st.title("📍 Navigation")
-    menu = ["Home", "About Me", "Skills & Projects", "Certifications & Research", "GKS Journey", "Contact"]
-    choice = st.radio("Pages", menu)
-    st.markdown("---")
-    st.caption("Built with ❤️ in Indore\nBy Shruti Jadon")
+    menu = ["Home", "About Me", "Skills & Learning", "Projects", "GKS Journey", "Contact"]
+    choice = st.sidebar.radio("Go to", menu)
 
-# --- HOME SECTION ---
+# --- HOME ---
 if choice == "Home":
     st.title("Welcome to My Portfolio 🌟")
-    st.subheader("B.Tech Student | Data & AI Enthusiast | GKS 2028 Aspirant")
+    st.subheader("B.Tech Computer Science | Data Enthusiast | GKS Aspirant")
     st.markdown("---")
-    st.write("""
-    Hi! I'm Shruti. This portfolio is a snapshot of my engineering journey, my projects, 
-    and my passion for bridging data analytics with human-centric design.
+    
+    st.markdown("""
+    ### 🎯 My Professional Vision
+    As a 3rd-year engineering student, I am deeply committed to exploring the intersection of **data analytics and human-centric design**. 
+    I believe in leveraging data to solve real-world problems and am currently channeling my academic and project work 
+    toward a single-minded goal: **securing the GKS Scholarship to pursue an M.Tech in Data Science and AI at a 
+    premier South Korean university by September 2028.**
     """)
+    
+    col1, col2, col3 = st.columns(3)
+    with col1: st.metric(label="Academic Year", value="3rd Year")
+    with col2: st.metric(label="Target Degree", value="M.Tech AI")
+    with col3: st.metric(label="Target Year", value="2028")
+        
+    st.info("💡 Currently focusing on building data-driven projects that bridge technical innovation with policy impact.")
 
-# --- ABOUT ME SECTION ---
+# --- ABOUT ME ---
 elif choice == "About Me":
     st.header("Who Am I? 👋")
-    st.write("""
-    I am a Computer Science engineering student based in Indore. 
-    - 💻 **By Day:** I am dedicated to mastering Data Analytics and AI.
-    - 💃 **By Night:** I am a trained dancer, which helps me stay disciplined and confident.
-    """)
-
-# --- SKILLS & PROJECTS SECTION ---
-elif choice == "Skills & Projects":
-    st.header("Skills & Projects 🚀")
+    st.write("I bridge the gap between complex data and real-world impact. By day, I am an engineering student dedicated to mastering data analytics and AI; by night, I am a trained dancer. This duality defines my professional approach—I blend the analytical rigor of data science with the creative discipline I’ve cultivated through years of performance.")
     
-    st.subheader("🛠️ Technical Projects")
+    col1, col2 = st.columns([1.5, 1])
+    with col1:
+        st.subheader("My Approach")
+        st.write("I am currently transitioning my focus from general computer science to **data-driven analytics and AI**. My work is defined by a commitment to transforming raw data into actionable, human-centric solutions.")
+    with col2:
+        st.subheader("Why Korea? 🇰🇷")
+        st.write("I am fascinated by Korea’s technological ecosystem and how the nation leverages big data to drive policy-making and business growth. I am eager to contribute my technical skills to the next wave of global AI-driven innovation.")
+
+# --- SKILLS & LEARNING ---
+elif choice == "Skills & Learning":
+    st.header("Technical Skills & Strategic Roadmap 📈")
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.subheader("Core Competencies")
+        st.write("✅ **Data Manipulation:** Python (Pandas, NumPy), Excel")
+        st.write("✅ **Data Visualization:** Trend analysis, storytelling with data")
+        st.write("✅ **Web Development:** Streamlit, basic UI/UX")
+    
+    with col2:
+        st.subheader("Strategic Roadmap (2026-2028)")
+        st.write("📌 **Advanced Analytics:** SQL for large-scale data")
+        st.write("📌 **Machine Learning:** AI for socio-economic forecasting")
+        st.write("📌 **Research Methods:** Academic foundations for grad studies")
+    
+    st.divider()
+    st.info("**Core Focus:** Integrating technical proficiency with Korea-specific case studies to prepare for advanced graduate research.")
+
+# --- PROJECTS ---
+elif choice == "Projects":
+    st.header("Projects & Leadership 🚀")
+    
     st.markdown("""
     <div class="project-card">
-        <h3>🌍 Tourism in Korea Analysis</h3>
-        <p>Analyzed post-pandemic tourism recovery trends.</p>
-        <span class="tag-pill">Python</span><span class="tag-pill">Pandas</span><span class="tag-pill">Data Vis</span>
-    </div>
-    
-    <div class="project-card">
-        <h3>💻 Tata Forge: GenAI Data Analytics</h3>
-        <p>Executed risk profiling and AI-based delinquency prediction.</p>
-        <span class="tag-pill">GenAI</span><span class="tag-pill">Analytics</span>
-    </div>
-    
-    <div class="project-card">
-        <h3>💻 Virtual Mentorship Bridge</h3>
-        <p>A web platform to connect students with mentors.</p>
-        <span class="tag-pill">Streamlit</span><span class="tag-pill">Web Dev</span>
+    <h3>🌍 Tourism in Korea (2019-2024): A Data-Driven Analysis</h3>
+    <p>Analyzing post-pandemic recovery data to understand shifts in consumer behavior using official Korean statistics.</p>
     </div>
     """, unsafe_allow_html=True)
-
-# --- CERTIFICATIONS & RESEARCH SECTION ---
-elif choice == "Certifications & Research":
-    st.header("Certifications & Research 📜")
     
-    st.info("📊 **Research Paper:** 'Data-Driven Traffic Incident Analysis and Risk Prediction for Smart City Mobility: A Case Study of Seoul Expressways'")
+    st.markdown("""
+    <div class="project-card">
+    <h3>💻 Virtual Mentorship Bridge</h3>
+    <p><b>Role: Lead Developer</b><br>
+    Designed a web-based platform to connect students with mentors, demonstrating a move from ideation to full deployment.</p>
+    </div>
+    """, unsafe_allow_html=True)
     
-    st.subheader("🏅 Achievements & Certifications")
-    st.write("- **NPTEL Elite Certification:** Developing Soft Skills and Personality (77%)")
-    st.write("- **Symbiosis Skill Hackathon 2026:** National Level Participant (Team: Rebel Teachies)")
-    st.write("- **Forage Job Simulation:** Tata Forge GenAI Analytics")
+    st.subheader("👥 Academic Leadership")
+    st.write("**Role: Class Representative (CR)** - Managing communication between faculty and students, honing essential leadership and organizational skills.")
 
-# --- GKS JOURNEY SECTION ---
+# --- GKS JOURNEY ---
 elif choice == "GKS Journey":
-    st.header("My GKS Journey (Target: 2028) 🎓")
-    st.write("My goal is to pursue my Master's in Korea, focusing on how AI and data-driven systems can solve socio-economic challenges.")
+    st.header("My GKS Scholarship Journey (Target: 2028) 🎓")
+    
+    st.info("**Core Vision:** Secure the GKS Scholarship to study how South Korea leverages data for socio-economic growth.")
 
-# --- CONTACT SECTION ---
+    st.subheader("📍 Phase 1: Foundation (Current)")
+    st.write("- Technical skill building (Python/Data Science).")
+    st.write("- Deploying real-world projects.")
+    
+    st.subheader("⚙️ Phase 2: Specialization (Next 12 Months)")
+    st.write("- Advanced ML and SQL focus.")
+    st.write("- Researching professors and target universities in Korea.")
+    
+    st.subheader("🎓 Phase 3: Application (2027-2028)")
+    st.write("- Finalizing GKS Personal Statement and Study Plan.")
+    st.write("- Maintaining 9+ SGPA.")
+
+# --- CONTACT ---
 elif choice == "Contact":
     st.header("Get In Touch 📬")
-    st.write("Feel free to reach out via email: **shrutijadon1306@gmail.com**")
-    
-    with st.form("contact_form"):
-        name = st.text_input("Your name")
-        email = st.text_input("Your Email")
-        msg = st.text_area("Your Message")
-        submit = st.form_submit_button("Send Message")
-        if submit:
-            st.success("Thank you! I will get back to you soon.")
+    st.write("I am open to collaborations and discussions regarding Data Science and research opportunities.")
+    if st.button("Email Me"):
+        st.write("Email: your.email@example.com")
