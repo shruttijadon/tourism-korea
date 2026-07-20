@@ -49,7 +49,7 @@ elif choice == "Contact":
         submit = st.form_submit_button("Send")
         if submit:
             st.success(f"Thanks {name}, I will get back to you soon!")
-```eof
+
 
 ### Isse run kaise karein:
 1. Apne computer mein Python install karein.
