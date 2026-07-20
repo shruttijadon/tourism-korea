@@ -7,35 +7,33 @@ st.set_page_config(
     layout="wide"
 )
 
-# --- Session State for Interactions ---
+# --- Session State ---
 if "home_open" not in st.session_state:
     st.session_state.home_open = False
-
 if "selected_project" not in st.session_state:
     st.session_state.selected_project = None
-
 if "selected_certificate" not in st.session_state:
     st.session_state.selected_certificate = None
 
-# --- Project Data ---
+# --- Data ---
 projects = {
     "Tourism in Korea Analysis": {
         "emoji": "🌍",
         "short": "Analyzing post-pandemic recovery trends using official Korean tourism statistics.",
         "detail": """
-**What I did**
+### What I did
 - Collected and studied tourism trend data related to Korea.
 - Cleaned and organized the data for analysis.
 - Identified recovery patterns after the pandemic.
 - Created insights for understanding tourism growth and seasonality.
 
-**Tools Used**
+### Tools Used
 - Python
 - Pandas
 - Data visualization libraries
 - Streamlit
 
-**Outcome**
+### Outcome
 - Built a data-driven analysis of tourism recovery.
 - Highlighted trend changes and key travel patterns.
 - Strengthened my skills in exploratory data analysis and storytelling.
@@ -45,19 +43,19 @@ projects = {
         "emoji": "💻",
         "short": "Risk profiling, predictive modeling, and data storytelling using AI-driven analytics.",
         "detail": """
-**What I did**
+### What I did
 - Worked on understanding business data and identifying risk patterns.
 - Used AI-based thinking to support analytics workflow.
 - Built insights from structured data.
 - Focused on data storytelling for decision-making.
 
-**Tools Used**
+### Tools Used
 - Python
 - Pandas
 - Analytical reasoning
 - Presentation and reporting tools
 
-**Outcome**
+### Outcome
 - Improved my understanding of AI-enabled analytics.
 - Learned how to turn raw data into useful business insights.
 - Strengthened my communication and problem-solving approach.
@@ -67,19 +65,19 @@ projects = {
         "emoji": "🤝",
         "short": "A platform connecting students with mentors, built during the Symbiosis Hackathon.",
         "detail": """
-**What I did**
+### What I did
 - Helped design a platform idea for student-mentor connection.
 - Focused on solving a real student support problem.
 - Contributed to the concept, planning, and presentation.
 - Worked in a team environment with deadlines.
 
-**Tools Used**
+### Tools Used
 - Hackathon workflow
 - Team collaboration
 - Presentation tools
 - Problem-solving framework
 
-**Outcome**
+### Outcome
 - Built teamwork and leadership experience.
 - Improved my ability to convert a social problem into a digital solution.
 - Gained practical exposure to innovation and fast execution.
@@ -87,40 +85,39 @@ projects = {
     }
 }
 
-# --- Certificate / Research Data ---
 certificates = {
     "Research Paper": {
         "emoji": "📊",
         "short": "Data-Driven Traffic Incident Analysis and Risk Prediction for Smart City Mobility: A Case Study of Seoul Expressways",
         "detail": """
-**Paper Title**
+### Paper Title
 Data-Driven Traffic Incident Analysis and Risk Prediction for Smart City Mobility: A Case Study of Seoul Expressways
 
-**What the paper is about**
+### About the paper
 - This research studies traffic incidents across major expressways in Seoul.
 - It uses official Seoul Open Data to identify spatial and seasonal patterns.
 - The analysis highlights high-risk corridors and time-based incident trends.
 - It connects data analysis with smart city mobility planning.
 
-**What I worked on**
+### What I worked on
 - Data collection from official open data sources.
 - Data cleaning and preprocessing.
 - Exploratory analysis of incident patterns.
 - Visualization of traffic trends and hotspot behavior.
 
-**Tools Used**
+### Tools Used
 - Python
 - Pandas
 - Data visualization
 - Statistical analysis
 - Research writing
 
-**Key Findings**
+### Key Findings
 - Certain expressways showed higher incident concentration.
 - Monthly and seasonal changes affected incident frequency.
 - The study supports proactive city planning and better traffic risk prediction.
 
-**Why it matters**
+### Why it matters
 This paper reflects my interest in using data science to solve real urban problems and improve smart city mobility.
 """
     },
@@ -128,16 +125,16 @@ This paper reflects my interest in using data science to solve real urban proble
         "emoji": "🎓",
         "short": "Developing Soft Skills and Personality (Score: 77%)",
         "detail": """
-**Certification**
+### Certification
 NPTEL Elite Certification in Developing Soft Skills and Personality
 
-**What I learned**
+### What I learned
 - Communication basics
 - Professional behavior
 - Confidence building
 - Team interaction and personal development
 
-**Why it matters**
+### Why it matters
 This certification strengthened my communication and presentation abilities, which are important for both academics and research.
 """
     },
@@ -145,21 +142,21 @@ This certification strengthened my communication and presentation abilities, whi
         "emoji": "🏆",
         "short": "National-level participant, Team: Rebel Teachies",
         "detail": """
-**Event**
+### Event
 Symbiosis Skill Hackathon 2026
 
-**My role**
+### My role
 - National-level participant
 - Team member of Rebel Teachies
 - Contributed to idea development and problem solving
 
-**Skills gained**
+### Skills gained
 - Teamwork
 - Fast thinking
 - Innovation
 - Practical solution building
 
-**Why it matters**
+### Why it matters
 This experience taught me how to work under pressure while building meaningful ideas with a team.
 """
     },
@@ -167,82 +164,100 @@ This experience taught me how to work under pressure while building meaningful i
         "emoji": "💼",
         "short": "Completed a practical job simulation in June 2026.",
         "detail": """
-**Program**
+### Program
 Forage: GenAI Powered Data Analytics
 
-**What I did**
+### What I did
 - Completed a practical analytics simulation.
 - Explored how generative AI supports data workflows.
 - Practiced analysis and decision-making in a professional context.
 
-**Tools / Exposure**
+### Tools / Exposure
 - Data analytics workflow
 - AI-driven insight generation
 - Business problem solving
 
-**Why it matters**
+### Why it matters
 It gave me industry-style exposure and improved my confidence in working with modern analytics tools.
 """
     }
 }
 
-# --- Helper: Project/Certificate Cards ---
-def render_card(title, emoji, short_text, key_prefix, is_project=True):
+# --- CSS ---
+st.markdown("""
+<style>
+.stApp {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d242e 100%);
+    color: #e0e0e0;
+    font-family: 'Segoe UI', sans-serif;
+}
+[data-testid="stSidebar"] {
+    background-color: rgba(0,0,0,0.2) !important;
+}
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 22px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 182, 193, 0.2);
+    margin-bottom: 15px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, border 0.3s ease;
+}
+.project-card:hover {
+    transform: translateY(-5px);
+    border: 1px solid rgba(255, 182, 193, 0.5);
+}
+.detail-panel {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,182,193,0.25);
+    border-radius: 22px;
+    padding: 24px;
+    backdrop-filter: blur(14px);
+    min-height: 520px;
+}
+.small-muted {
+    color: #c9c9c9;
+    font-size: 0.95rem;
+}
+h1, h2, h3, h4 {
+    color: #ffb6c1 !important;
+}
+div.stButton > button {
+    background: linear-gradient(90deg, #ffb6c1, #a393eb);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    width: 100%;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# --- Helpers ---
+def show_detail_panel(title, subtitle, content):
+    with st.container():
+        st.markdown('<div class="detail-panel">', unsafe_allow_html=True)
+        st.subheader(title)
+        if subtitle:
+            st.write(subtitle)
+        st.markdown(content)
+        st.markdown("</div>", unsafe_allow_html=True)
+
+def render_tile(title, emoji, short_text, key_prefix, kind="project"):
     st.markdown(f"""
     <div class="project-card">
         <h3>{emoji} {title}</h3>
         <p>{short_text}</p>
     </div>
     """, unsafe_allow_html=True)
-    if st.button(f"View details: {title}", key=f"{key_prefix}_{title}"):
-        if is_project:
+    if st.button(f"Open details", key=f"{key_prefix}_{title}"):
+        if kind == "project":
             st.session_state.selected_project = title
             st.session_state.selected_certificate = None
         else:
             st.session_state.selected_certificate = title
             st.session_state.selected_project = None
-
-# --- Aesthetic CSS Styling ---
-st.markdown("""
-    <style>
-    .stApp {
-        background: linear-gradient(135deg, #1a1a1a 0%, #2d242e 100%);
-        color: #e0e0e0;
-        font-family: 'Segoe UI', sans-serif;
-    }
-
-    [data-testid="stSidebar"] {
-        background-color: rgba(0,0,0,0.2) !important;
-    }
-
-    .project-card {
-        background: rgba(255, 255, 255, 0.05);
-        padding: 22px;
-        border-radius: 20px;
-        border: 1px solid rgba(255, 182, 193, 0.2);
-        margin-bottom: 15px;
-        backdrop-filter: blur(10px);
-        transition: transform 0.3s ease, border 0.3s ease;
-    }
-
-    .project-card:hover {
-        transform: translateY(-5px);
-        border: 1px solid rgba(255, 182, 193, 0.5);
-    }
-
-    h1, h2, h3, h4 {
-        color: #ffb6c1 !important;
-    }
-
-    div.stButton > button {
-        background: linear-gradient(90deg, #ffb6c1, #a393eb);
-        color: white;
-        border: none;
-        border-radius: 20px;
-        padding: 10px 20px;
-    }
-    </style>
-""", unsafe_allow_html=True)
+        st.rerun()
 
 # --- Sidebar Navigation ---
 with st.sidebar:
@@ -263,6 +278,7 @@ if choice == "Home":
             <p>Explore my academic journey, skills, projects, and research work.</p>
         </div>
         """, unsafe_allow_html=True)
+
         if st.button("Hello, I'm Shruti ✨", key="home_open_btn"):
             st.session_state.home_open = True
             st.rerun()
@@ -272,6 +288,7 @@ if choice == "Home":
         **data analytics, AI, and human-centered design**. My goal is to pursue an M.Tech in Data Science and AI in South Korea
         through the GKS Scholarship and build solutions that create real social impact.
         """)
+
         col1, col2, col3 = st.columns(3)
         with col1:
             st.metric("Academic Year", "3rd Year")
@@ -328,50 +345,79 @@ elif choice == "Skills & Learning":
         "- Dashboard Design"
     )
 
-# --- PROJECTS ---
+# --- PROJECTS WITH RIGHT PANEL ---
 elif choice == "Projects":
     st.header("Projects & Leadership 🚀")
-    st.write("Click on any project to see what I did, the tools I used, and the outcome of my work.")
+    st.write("Click on any project to open its details in the right panel.")
 
-    cols = st.columns(1)
-    for title, data in projects.items():
-        render_card(title, data["emoji"], data["short"], "proj", is_project=True)
+    left, right = st.columns([1.1, 1])
 
-    if st.session_state.selected_project:
-        st.markdown("---")
-        st.subheader(f"Details: {st.session_state.selected_project}")
-        st.markdown(projects[st.session_state.selected_project]["detail"])
-        if st.button("Close project details", key="close_project"):
-            st.session_state.selected_project = None
-            st.rerun()
+    with left:
+        for title, data in projects.items():
+            render_tile(title, data["emoji"], data["short"], "proj", kind="project")
 
-# --- CERTIFICATIONS & RESEARCH ---
+    with right:
+        if st.session_state.selected_project:
+            show_detail_panel(
+                f"Details: {st.session_state.selected_project}",
+                "Project explanation, tools, contribution, and result.",
+                projects[st.session_state.selected_project]["detail"]
+            )
+
+            if st.button("Close project panel", key="close_project"):
+                st.session_state.selected_project = None
+                st.rerun()
+        else:
+            st.markdown("""
+            <div class="detail-panel">
+                <h3>Project Details Panel</h3>
+                <p class="small-muted">Select any project from the left side to view your contribution, tools used, and outcomes here.</p>
+            </div>
+            """, unsafe_allow_html=True)
+
+# --- CERTIFICATIONS & RESEARCH WITH RIGHT PANEL ---
 elif choice == "Certifications & Research":
     st.header("Certifications & Research 📜")
-    st.info(
-        "📊 Research Paper: 'Data-Driven Traffic Incident Analysis and Risk Prediction for Smart City Mobility: A Case Study of Seoul Expressways'"
-    )
-    st.write(
-        "This section includes my research paper and certifications. The paper focuses on traffic incident analysis, hotspot detection, and seasonal trend study using Seoul expressway data."
-    )
+    st.info("📊 Research Paper: 'Data-Driven Traffic Incident Analysis and Risk Prediction for Smart City Mobility: A Case Study of Seoul Expressways'")
+    st.write("This section includes my research paper and certifications with proper explanations.")
 
-    st.markdown("### Research Paper")
-    if st.button("View research paper details", key="research_btn"):
-        st.session_state.selected_certificate = "Research Paper"
+    left, right = st.columns([1.1, 1])
 
-    st.markdown("---")
-    st.markdown("### Certifications")
-    for title in ["NPTEL Elite Certification", "Symbiosis Skill Hackathon 2026", "Forage: GenAI Powered Data Analytics"]:
-        data = certificates[title]
-        render_card(title, data["emoji"], data["short"], "cert", is_project=False)
+    with left:
+        st.markdown("### Research Paper")
+        render_tile(
+            "Research Paper",
+            "📊",
+            "Data-Driven Traffic Incident Analysis and Risk Prediction for Smart City Mobility: A Case Study of Seoul Expressways",
+            "cert_research",
+            kind="certificate"
+        )
 
-    if st.session_state.selected_certificate:
-        st.markdown("---")
-        st.subheader(f"Details: {st.session_state.selected_certificate}")
-        st.markdown(certificates[st.session_state.selected_certificate]["detail"])
-        if st.button("Close certificate/research details", key="close_cert"):
-            st.session_state.selected_certificate = None
-            st.rerun()
+        st.markdown("### Certifications")
+        for title in ["NPTEL Elite Certification", "Symbiosis Skill Hackathon 2026", "Forage: GenAI Powered Data Analytics"]:
+            data = certificates[title]
+            render_tile(title, data["emoji"], data["short"], "cert", kind="certificate")
+
+    with right:
+        if st.session_state.selected_certificate:
+            show_detail_panel(
+                f"Details: {st.session_state.selected_certificate}",
+                "Certificate / research explanation.",
+                certificates[st.session_state.selected_certificate]["detail"]
+                if st.session_state.selected_certificate in certificates
+                else certificates["Research Paper"]["detail"]
+            )
+
+            if st.button("Close certificate panel", key="close_cert"):
+                st.session_state.selected_certificate = None
+                st.rerun()
+        else:
+            st.markdown("""
+            <div class="detail-panel">
+                <h3>Details Panel</h3>
+                <p class="small-muted">Click any certificate or the research paper on the left to see a polished explanation here.</p>
+            </div>
+            """, unsafe_allow_html=True)
 
 # --- GKS JOURNEY ---
 elif choice == "GKS Journey":
