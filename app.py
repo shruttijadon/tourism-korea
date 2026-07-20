@@ -6,7 +6,7 @@ st.set_page_config(
     page_icon="🎓",
     layout="wide"
 )
-
+ 
 # --- Session State ---
 if "home_open" not in st.session_state:
     st.session_state.home_open = False
