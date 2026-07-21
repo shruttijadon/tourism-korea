@@ -166,25 +166,25 @@ div.stButton > button {
 # --- Sidebar Navigation ---
 with st.sidebar:
     st.title("📍 Navigation")
-    menu = ["Home", "About Me", "Skills & Learning", "Projects", "Certifications & Research", "GKS Journey", "Contact"]
+    menu = ["Home", "About Me", "Skills & Learning", "Projects", "Certifications & Research", "KGKS Journey", "Contact"]
     choice = st.radio("Go to", menu)
 
 # --- HOME ---
 if choice == "Home":
     st.title("Hi there, I'm Shruti ✨")
-    st.subheader("B.Tech Computer Science | Data Enthusiast | GKS Aspirant")
+    st.subheader("B.Tech Computer Science | Machine Learning & AI | KGKS Aspirant")
     st.markdown("---")
 
     if not st.session_state.home_open:
-        st.markdown('<div class="project-card"><h3>Tap to know more about me</h3><p>Explore my academic journey, skills, projects, and research work.</p></div>', unsafe_allow_html=True)
+        st.markdown('<div class="project-card"><h3>Tap to know more about me</h3><p>Explore my academic journey, core machine learning skills, projects, and research work.</p></div>', unsafe_allow_html=True)
         if st.button("Hello, I'm Shruti ✨", key="home_open_btn"):
             st.session_state.home_open = True
             st.rerun()
     else:
-        st.markdown("As a **3rd-year B.Tech Computer Science student**, I am deeply committed to exploring the intersection of **data analytics, AI, and human-centered design**.")
+        st.markdown("As a **3rd-year B.Tech Computer Science student**, I am deeply focused on **Machine Learning, Deep Learning, and AI Convergence Engineering** to build intelligent data-driven systems.")
         col1, col2, col3 = st.columns(3)
         col1.metric("Academic Year", "3rd Year")
-        col2.metric("Target Degree", "M.Tech AI")
+        col2.metric("Target Degree", "M.Tech AI & Convergence")
         col3.metric("Target Year", "2028")
         if st.button("Hide intro", key="home_hide_btn"):
             st.session_state.home_open = False
@@ -193,14 +193,14 @@ if choice == "Home":
 # --- ABOUT ME ---
 elif choice == "About Me":
     st.header("Who Am I? 👋")
-    st.write("ayatics, AI, and smart city research.")
-st.write("I am a 3rd-year B.Tech Computer Science student with a strong passion for data science, machine learning, and intelligent data systems. My technical focus lies in building predictive models, time-series forecasting, and scalable software solutions. Driven by a commitment to bridging theoretical concepts with real-world applications, I am actively developing my expertise in artificial intelligence and preparing for advanced graduate research.")
+    st.write("I am a 3rd-year B.Tech Computer Science student with a core focus on Machine Learning, Deep Learning, and AI Convergence Engineering. My technical expertise lies in building predictive models, time-series forecasting, and robust neural networks using Python and PyTorch. Driven by a passion for advanced research and intelligent systems, I am actively preparing for my M.Tech research journey via the KGKS scholarship track.")
+
 # --- SKILLS & LEARNING ---
 elif choice == "Skills & Learning":
     st.header("Technical Skills & Roadmap 📈")
     c1, c2 = st.columns(2)
-    c1.write("### ✅ Core Competencies\n- Python\n- Data Visualization\n- Web Development\n- Power BI")
-    c2.write("### 📌 Strategic Roadmap\n- Machine Learning\n- Research Methods\n- Data Storytelling")
+    c1.write("### ✅ Core Competencies\n- Python, PyTorch, Scikit-Learn\n- Predictive Modeling & Time-Series\n- Data Preprocessing & Regularization\n- Streamlit Deployment & Git")
+    c2.write("### 📌 Strategic Research Roadmap\n- Deep Neural Networks & Computer Vision\n- Smart City Mobility & Incident Prediction\n- Advanced Research Methodologies")
 
 # --- PROJECTS ---
 elif choice == "Projects":
@@ -248,8 +248,12 @@ elif choice == "Certifications & Research":
     if st.session_state.selected_certificate:
         st.markdown(certificates[st.session_state.selected_certificate]["detail"])
 
-# --- k-GKS JOURNEY & CONTACT ---
-elif choice == "k-GKS Journey":
-    st.header("My k-GKS Journey (Target: 2028) 🎓")
+# --- KGKS JOURNEY ---
+elif choice == "KGKS Journey":
+    st.header("My KGKS Journey (Target: 2028) 🎓")
+    st.write("Targeting an M.Tech admission in Computer & AI Convergence Engineering at KIT via the KGKS scholarship, backed by targeted machine learning research and proactive faculty collaboration.")
+
+# --- CONTACT ---
 elif choice == "Contact":
     st.header("Get In Touch 📬")
+    st.write("Feel free to reach out for machine learning research collaborations, technical discussions, or professional networking!")
