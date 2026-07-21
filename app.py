@@ -193,8 +193,8 @@ if choice == "Home":
 # --- ABOUT ME ---
 elif choice == "About Me":
     st.header("Who Am I? 👋")
-    st.write("I am Shruti Jadon, a third-year B.Tech Computer Science student with a strong interest in data analytics, AI, and smart city research.")
-
+    st.write(ytics, AI, and smart city research.")
+st.write("I am a 3rd-year B.Tech Computer Science student with a strong passion for data science, machine learning, and intelligent data systems. My technical focus lies in building predictive models, time-series forecasting, and scalable software solutions. Driven by a commitment to bridging theoretical concepts with real-world applications, I am actively developing my expertise in artificial intelligence and preparing for advanced graduate research.")
 # --- SKILLS & LEARNING ---
 elif choice == "Skills & Learning":
     st.header("Technical Skills & Roadmap 📈")
@@ -248,8 +248,8 @@ elif choice == "Certifications & Research":
     if st.session_state.selected_certificate:
         st.markdown(certificates[st.session_state.selected_certificate]["detail"])
 
-# --- GKS JOURNEY & CONTACT ---
-elif choice == "GKS Journey":
-    st.header("My GKS Journey (Target: 2028) 🎓")
+# --- k-GKS JOURNEY & CONTACT ---
+elif choice == "k-GKS Journey":
+    st.header("My k-GKS Journey (Target: 2028) 🎓")
 elif choice == "Contact":
     st.header("Get In Touch 📬")
