@@ -193,7 +193,7 @@ if choice == "Home":
 # --- ABOUT ME ---
 elif choice == "About Me":
     st.header("Who Am I? 👋")
-    st.write(ytics, AI, and smart city research.")
+    st.write("ayatics, AI, and smart city research.")
 st.write("I am a 3rd-year B.Tech Computer Science student with a strong passion for data science, machine learning, and intelligent data systems. My technical focus lies in building predictive models, time-series forecasting, and scalable software solutions. Driven by a commitment to bridging theoretical concepts with real-world applications, I am actively developing my expertise in artificial intelligence and preparing for advanced graduate research.")
 # --- SKILLS & LEARNING ---
 elif choice == "Skills & Learning":
