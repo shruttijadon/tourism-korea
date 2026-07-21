@@ -18,7 +18,7 @@ if "selected_project" not in st.session_state:
 if "selected_certificate" not in st.session_state:
     st.session_state.selected_certificate = None
 
-# --- Data ---
+# --- Data: Projects ---
 projects = {
     "Tourism in Korea Analysis": {
         "emoji": "🌍",
@@ -88,43 +88,46 @@ projects = {
     }
 }
 
+# --- Data: Certifications & Research ---
 certificates = {
     "Research Paper": {
         "emoji": "📊",
         "short": "Data-Driven Traffic Incident Analysis and Risk Prediction for Smart City Mobility: A Case Study of Seoul Expressways",
         "detail": """
-### Paper Title
-Data-Driven Traffic Incident Analysis and Risk Prediction for Smart City Mobility: A Case Study of Seoul Expressways
-
-### About the paper
-- This research studies traffic incidents across major expressways in Seoul.
-- It uses official Seoul Open Data to identify spatial and seasonal patterns.
-- The analysis highlights high-risk corridors and time-based incident trends.
-- It connects data analysis with smart city mobility planning.
+### Research Focus & Overview
+- **Title:** Data-Driven Traffic Incident Analysis and Risk Prediction for Smart City Mobility: A Case Study of Seoul Expressways
+- **Core Objective:** Investigates traffic incidents across major expressways in Seoul utilizing official Seoul Open Data to uncover spatial and seasonal behavioral patterns.
+- **Methodology & Impact:** Employs predictive analytics to pinpoint high-ranking risk corridors and time-based incident trends, directly bridging raw data processing with smart city mobility planning and intelligent transportation frameworks.
 """
     },
     "NPTEL Elite Certification": {
         "emoji": "🎓",
-        "short": "Developing Soft Skills and Personality (Score: 77%)",
+        "short": "Developing Soft Skills and Personality (Score: 77% - Elite)",
         "detail": """
-### Certification
-NPTEL Elite Certification in Developing Soft Skills and Personality
+### Certification Details
+- **Program:** NPTEL Elite Certification in Developing Soft Skills and Personality
+- **Performance:** Achieved an Elite score of 77%.
+- **Value:** Highlights strong professional communication, collaborative capability, and interpersonal competencies suited for rigorous international academic and research environments.
 """
     },
     "Symbiosis Skill Hackathon 2026": {
         "emoji": "🏆",
         "short": "National-level participant, Team: Rebel Teachies",
         "detail": """
-### Event
-Symbiosis Skill Hackathon 2026
+### Event Summary
+- **Hackathon:** Symbiosis Skill Hackathon 2026
+- **Team:** Rebel Teachies
+- **Contribution:** Engaged in high-pressure, rapid-execution software prototyping, translating complex user requirements into practical digital solutions like the Virtual Mentorship Bridge under strict deadlines.
 """
     },
     "Forage: GenAI Powered Data Analytics": {
         "emoji": "💼",
-        "short": "Completed a practical job simulation in June 2026.",
+        "short": "Completed a practical job simulation in June 2026 focusing on GenAI analytics.",
         "detail": """
-### Program
-Forage: GenAI Powered Data Analytics
+### Simulation Scope
+- **Program:** Forage GenAI Powered Data Analytics Job Simulation
+- **Key Focus:** Applied generative AI tools and structured workflows to business risk profiling, data storytelling, and advanced predictive modeling simulations.
+- **Outcome:** Strengthened capabilities in converting unstructured data inputs into practical, actionable analytical decisions.
 """
     }
 }
@@ -241,12 +244,19 @@ elif choice == "Projects":
 # --- CERTIFICATIONS & RESEARCH ---
 elif choice == "Certifications & Research":
     st.header("Certifications & Research 📜")
-    for title in ["Research Paper", "NPTEL Elite Certification", "Symbiosis Skill Hackathon 2026", "Forage: GenAI Powered Data Analytics"]:
-        if st.button(f"View: {title}", key=f"cert_{title}"):
+    for title, data in certificates.items():
+        st.markdown(f'<div class="project-card"><h3>{data["emoji"]} {title}</h3><p>{data["short"]}</p></div>', unsafe_allow_html=True)
+        if st.button(f"View details: {title}", key=f"cert_btn_{title}"):
             st.session_state.selected_certificate = title
             st.rerun()
+
     if st.session_state.selected_certificate:
+        st.markdown("---")
+        st.subheader(f"Details: {st.session_state.selected_certificate}")
         st.markdown(certificates[st.session_state.selected_certificate]["detail"])
+        if st.button("Close certificate details", key="close_cert"):
+            st.session_state.selected_certificate = None
+            st.rerun()
 
 # --- KGKS JOURNEY ---
 elif choice == "KGKS Journey":
