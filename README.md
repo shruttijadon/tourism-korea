@@ -1,6 +1,7 @@
 hello i am shruti jadon
 Welcome to my portfolio repository. I am a B.Tech student with a focus on data science, analytics, and software development. This space serves as a showcase for my academic projects and professional growth.
-About Me
+
+
 
 I am a motivated engineering student dedicated to leveraging data-driven insights to solve complex, real-world challenges. My academic journey is complemented by a passion for continuous learning and innovative technical development.
 🛠 Technical Competencies
