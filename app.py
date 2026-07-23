@@ -118,4 +118,4 @@ model_data = pd.DataFrame({
 
 st.dataframe(model_data, use_container_width=True)
 
-st.success(
+st.success()
