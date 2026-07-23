@@ -9,38 +9,53 @@
 
 ## 📊 Project Summary
 
-**Predict travel industry recovery post-COVID using time-series forecasting**
+Predict travel industry recovery post-COVID using time-series forecasting
 
 | Metric | Value |
 |--------|-------|
-| **Data Points** | 8,000+ |
-| **Model Accuracy** | 92% R² |
+| **Data Points Analyzed** | 8,000+ |
+| **Model Accuracy** | 92% R² Score |
 | **Prediction Accuracy** | 87% |
-| **MAPE Error** | 5.2% |
-| **Time Saved** | 40+ hours |
+| **Error Rate (MAPE)** | 5.2% |
+| **Analysis Time Saved** | 40+ hours |
 
 ---
 
-## 🎯 Problem Statement
+## 🎯 Problem
 
-After COVID-19 pandemic, the travel industry faced unprecedented challenges:
-- Recovery patterns were unclear and unpredictable
-- Stakeholders didn't know **when** and **which sectors** would recover
-- Manual analysis was time-consuming and lacked actionable insights
-- Decision-makers couldn't plan investment and hiring strategies
+After COVID-19, the travel industry faced big challenges:
 
-**Challenge:** How to forecast travel industry recovery and identify high-growth sectors?
+- Nobody knew when travel would recover
+- Different sectors recovered at different speeds
+- Manual analysis took too much time
+- Decision-makers couldn't plan investment strategy
+
+**Question:** When will travel industry recover? Which sectors will recover first?
 
 ---
 
 ## 💡 Solution
 
-Developed **time-series forecasting models** that:
+I built time-series forecasting models that:
 
-✅ **Analyzed** historical travel data (2015-2024)  
-✅ **Built** ARIMA + Prophet predictive models  
-✅ **Visualized** sector-wise recovery trends  
-✅ **Generated** 12-month monthly forecasts  
-✅ **Delivered** actionable business recommendations  
+✅ Analyzed 8,000+ months of historical travel data (2015-2024)
+✅ Used ARIMA and Prophet models to predict future trends
+✅ Showed which sectors would recover first
+✅ Generated forecasts for next 12 months
+✅ Provided business recommendations
 
-### Technical Approach
+---
+
+## 📈 Results
+
+### Model Performance
+
+**Best Model: Prophet**
+- R² Score: 92% (Very Good)
+- MAE: 0.08
+- RMSE: 0.12
+- MAPE: 5.2%
+
+### What I Discovered
+
+**Recovery by Sector (Fastest to Slowest):**
